@@ -10,7 +10,7 @@ func Sum(num ...int) (sum int) {
 	return
 }
 
-type User struct {
+type U struct {
 	Name    string
 	Age     int
 	Address string
@@ -43,7 +43,7 @@ func main() {
 		%f	浮点数
 		%p	指针，十六进制方式显示
 	*/
-	user := User{
+	user := U{
 		Name:    "张三",
 		Age:     18,
 		Address: "hangzhou",
