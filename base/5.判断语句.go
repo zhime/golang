@@ -37,6 +37,7 @@ func main() {
 		fmt.Println("周二")
 	case 3:
 		fmt.Println("周三")
+		fallthrough // case 穿透
 	default:
 		fmt.Println("未知")
 	}
