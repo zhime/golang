@@ -12,7 +12,7 @@ import (
 func GetHostIp() string {
 	conn, err := net.Dial("udp", "8.8.8.8:53")
 	if err != nil {
-		fmt.Println("get current host ip err: ", err)
+		fmt.Println("get host ip err: ", err)
 		return ""
 	}
 	addr := conn.LocalAddr().(*net.UDPAddr)
@@ -32,4 +32,9 @@ func GetHostName() string {
 // GetOS 获取操作系统
 func GetOS() string {
 	return runtime.GOOS
+}
+
+// GetArch 获取操作系统架构
+func GetArch() string {
+	return runtime.GOARCH
 }

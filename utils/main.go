@@ -14,4 +14,7 @@ func main() {
 
 	os := sys.GetOS()
 	fmt.Println(os)
+
+	arch := sys.GetArch()
+	fmt.Println(arch)
 }
