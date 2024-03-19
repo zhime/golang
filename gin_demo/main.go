@@ -5,6 +5,12 @@ import (
 	"net/http"
 )
 
+func Index(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"msg": "hello",
+	})
+}
+
 func main() {
 	//http.HandleFunc("/hello", func(writer http.ResponseWriter, request *http.Request) {
 	//	fmt.Println(request.Method)
@@ -18,11 +24,11 @@ func main() {
 	//	fmt.Println(err)
 	//}
 
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"msg": "hello",
-		})
-	})
+	api := r.Group("api")
+	{
+		api.GET("user", Index)
+	}
 	_ = r.Run()
 }
