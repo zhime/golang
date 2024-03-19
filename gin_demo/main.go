@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -9,6 +10,11 @@ func Index(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"msg": "hello",
 	})
+}
+
+func mid(c *gin.Context) {
+	fmt.Println("mid")
+	c.Next()
 }
 
 func main() {
@@ -26,6 +32,7 @@ func main() {
 
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
+	r.Use(mid)
 	api := r.Group("api")
 	{
 		api.GET("user", Index)
