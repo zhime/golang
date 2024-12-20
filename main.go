@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"github.com/zhime/golang/cmd"
 )
 
 func main() {
-	fmt.Println("main")
+	_ = cmd.Execute()
 }
