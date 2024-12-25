@@ -1,9 +1,14 @@
 package main
 
 import (
-	"github.com/zhime/golang/cmd"
+	"github.com/gin-gonic/gin"
+	"github.com/zhime/golang/router"
 )
 
 func main() {
-	_ = cmd.Execute()
+	//_ = cmd.Execute()
+
+	r := gin.Default()
+	router.InitRouter(r)
+	_ = r.Run()
 }
