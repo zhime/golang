@@ -1,7 +1,6 @@
 package router
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/zhime/golang/model"
@@ -18,10 +17,28 @@ func getUser(c *gin.Context) {
 		Email:   "admin@qq.com",
 	}
 
-	jsonByte, err := json.Marshal(&user)
-	if err != nil {
+	//jsonByte, err := json.Marshal(&user)
+	//if err != nil {
+	//	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	//	fmt.Println(err)
+	//	return
+	//}
+	c.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"data":    user,
+	})
+}
+
+func addUser(c *gin.Context) {
+	var user model.User
+	if err := c.ShouldBindJSON(&user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		fmt.Println(err)
 		return
 	}
-	c.JSON(http.StatusOK, string(jsonByte))
+	fmt.Println(user)
+	c.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"data":    user,
+	})
 }
